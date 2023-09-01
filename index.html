@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>Admin UI</title>
+
+    <style>
+      html {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        /* font-family: "Courier New", Courier, monospace; */
+        background-color: #f8f8f8;
+      }
+      .pa-5 {
+        padding: 72px;
+      }
+
+      .pa-3 {
+        padding: 60px;
+      }
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .font-40 {
+        font-size: 40px;
+        color: #9d9696;
+      }
+
+      .font-23 {
+        font-size: 23px;
+        color: #9d9696;
+        text-align: center;
+      }
+
+      .btnStyle {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      tbody {
+        :hover {
+          background-color: #f8f8f8;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pa-5">
+      <div class="card">
+        <div class="card-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input
+                id="search"
+                type="text"
+                placeholder="Search by name, email or role"
+              />
+              <label for="search"></label>
+            </div>
+          </div>
+          <div lass="row">
+            <div class="col s12 flex">
+                <p>
+                    <label>
+                      <input type="checkbox" onchange="handleSelectAll()"/>
+                      <span>Select All</span>
+                    </label>
+                  </p>
+                <i class="material-icons hidden" id="deleteSelected" style="cursor: pointer; color: lightcoral;">delete</i>
+            </div>
+            
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <!-- <p>
+                    <label>
+                      <input type="checkbox" onchange="handleSelectAll()"/>
+                      <span></span>
+                    </label>
+                  </p> -->
+                </th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <ul class="pagination flex" id="pagination" style="width: 40%">
+            <!-- <li class="disabled" id="prev-page"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect" id="next-page"><a href="#!"><i class="material-icons">chevron_right</i></a></li> -->
+          </ul>
+
+          <!-- Modal Structure -->
+          <div id="deleteModal" class="modal">
+            <div class="modal-content pa-3 flex-center">
+              <i class="material-icons large" style="color: red">cancel</i>
+
+              <div class="font-40">Are you sure?</div>
+
+              <span class="font-23"
+                >Do you really want to delete these records? This process cannot
+                be undone.</span
+              >
+
+              <div class="btnStyle">
+                <a class="waves-effect waves-light btn-large" id="cancelBtn"
+                  >Cancel</a
+                >
+                <a class="waves-effect waves-light btn-large" id="deleteBtn"
+                  >Delete</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
