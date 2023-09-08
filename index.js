@@ -75,9 +75,54 @@ const action = document.createElement("td");
 action.style.cursor = "pointer";
 
 // start of actions
+
+    const addIcon = document.createElement("i");
+    // addIcon.classList.add("material-icons");
+    addIcon.setAttribute("class", "add material-icons hidden");
+    addIcon.style.marginLeft = "1rem";
+    addIcon.innerHTML = "&#xE03B";
+    addIcon.addEventListener("click", function () {
+      console.log("Hi");
+      var empty = false;
+      var input = $(this).parents("tr").find('input[type="text"]');
+      input.each(function () {
+        if (!$(this).val()) {
+          $(this).addClass("error");
+          empty = true;
+        } else {
+          $(this).removeClass("error");
+        }
+      });
+      $(this).parents("tr").find(".error").first().focus();
+      if (!empty) {
+        input.each(function () {
+          $(this).parent("td").html($(this).val());
+        });
+        $(this).parents("tr").find(".add, .edit").toggle();
+        $(".add-new").removeAttr("disabled");
+      }
+    })
+
+
 const editIcon = document.createElement("i");
-editIcon.classList.add("material-icons");
+//editIcon.classList.add("material-icons");
+editIcon.setAttribute("class", "edit material-icons");
+    editIcon.style.marginLeft = "1rem";
 editIcon.innerHTML = "edit";
+editIcon.addEventListener("click", function () {
+      console.log("Hi");
+      //  e.preventDefault()
+      $(this).parents("tr").find("td:not(:last-child)").each(function (index) {
+        if (index == 0) {
+          return;
+        }
+        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+      });
+      $(this).parents("tr").find(".add, .edit").toggle();
+      $(".add-new").attr("disabled", "disabled");
+
+    })
+
 
 const deleteIcon = document.createElement("i");
 deleteIcon.classList.add("material-icons");
@@ -99,6 +144,7 @@ email.innerHTML = member.email;
 role.innerHTML = member.role;
 action.appendChild(editIcon);
 action.appendChild(deleteIcon);
+action.appendChild(addIcon);
 
 check.addEventListener("change", () => {
 if (deleteMap.hasOwnProperty(i)) {
