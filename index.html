@@ -88,7 +88,7 @@
               <label for="search"></label>
             </div>
           </div>
-          <div class="row">
+          <div class="row" id="selectAll">
             <div class="col s12 flex">
                 <p>
                     <label>
@@ -107,7 +107,7 @@
             </div>
 
           </div>
-          <table>
+          <table id="table-data">
             <thead>
               <tr>
                 <th>
@@ -132,12 +132,18 @@
             <li class="waves-effect" id="next-page"><a href="#!"><i class="material-icons">chevron_right</i></a></li> -->
           </ul>
 
+          <div id="nodatafound" style="justify-content: center; align-items: center; flex-direction: column; gap: 12px">
+            <i class="material-icons large" style="color: lightcoral">do_not_disturb</i>
+            <h4>No result found.</h4>
+            <span>No matching found. Please try searching with other keywords.</span>
+          </div>
+
        
 
           <!-- Modal Structure -->
           <div id="deleteModal" class="modal">
             <div class="modal-content pa-3 flex-center">
-              <i class="material-icons large" style="color: red">cancel</i>
+              <i class="material-icons large" style="color: lightcoral">cancel</i>
 
               <div class="font-40">Are you sure?</div>
 
